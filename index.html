@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Hafili</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: red;
+      font-family: 'Courier New', Courier, monospace;
+      overflow: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 4em;
+      margin-top: 20vh;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .whisper {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      font-size: 1.2em;
+      opacity: 0.3;
+    }
+
+    #jumpscare {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    #jumpscare img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body onclick="triggerJumpscare()">
+  <h1>Hafili</h1>
+  <div class="whisper">jangan klik sembarangan...</div>
+
+  <div id="jumpscare">
+    <img src="https://i.imgur.com/oT1N2lK.gif" alt="BOO!">
+  </div>
+
+  <audio id="bgAudio" autoplay loop>
+    <source src="https://www.fesliyanstudios.com/play-mp3/387" type="audio/mpeg">
+  </audio>
+
+  <audio id="scream">
+    <source src="https://www.myinstants.com/media/sounds/movie_1.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const jumpscare = document.getElementById('jumpscare');
+    const scream = document.getElementById('scream');
+
+    function triggerJumpscare() {
+      jumpscare.style.display = 'flex';
+      scream.play();
+      setTimeout(() => {
+        jumpscare.style.display = 'none';
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
